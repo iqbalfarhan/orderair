@@ -8,8 +8,8 @@ use Livewire\Component;
 class Login extends Component
 {
 
-    public $username = 'komplek';
-    public $password = 'telkom';
+    public $username;
+    public $password;
 
     public function login()
     {
