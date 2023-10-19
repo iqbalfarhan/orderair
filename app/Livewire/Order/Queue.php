@@ -14,6 +14,7 @@ class Queue extends Component
             'status' => 'progress'
         ]);
 
+        $this->dispatch('reload');
         $this->render();
     }
     public function render()

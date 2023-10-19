@@ -7,6 +7,12 @@ use Livewire\Component;
 
 class Done extends Component
 {
+
+    public function deleteOrder(Order $order)
+    {
+        $order->delete();
+    }
+
     public function render()
     {
         return view('livewire.order.done', [

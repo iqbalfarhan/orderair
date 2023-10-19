@@ -30,11 +30,9 @@
                             </div>
                         </td>
                         <td>{{ $data->address }}</td>
-                        <td>{{ $data->status }}</td>
+                        <td>{{ $data->status_alias }}</td>
                         <td>
-                            <div class="flex space-x-1">
-                                <button class="btn btn-xs btn-success">detail</button>
-                            </div>
+                            <button class="btn btn-xs btn-error" wire:click="deleteOrder({{ $data->id }})">delete</button>
                         </td>
                     </tr>
                 @endforeach

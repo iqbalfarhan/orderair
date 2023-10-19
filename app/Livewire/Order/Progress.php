@@ -13,6 +13,7 @@ class Progress extends Component
             'status' => 'done'
         ]);
 
+        $this->dispatch('reload');
         $this->render();
     }
 
