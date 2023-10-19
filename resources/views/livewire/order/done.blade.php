@@ -1,10 +1,10 @@
 <div class="space-y-6">
-    <div class="flex justify-between">
+    <div class="flex flex-col lg:flex-row justify-between gap-6">
         @livewire('partial.header', [
             'title' => 'Selesai pengiriman',
         ])
         <div class="flex gap-2">
-            <input type="text" class="input" placeholder="Cari antrian">
+            <input type="text" class="input w-full" placeholder="Cari antrian">
             @guest
                 @livewire('partial.login')
             @endguest

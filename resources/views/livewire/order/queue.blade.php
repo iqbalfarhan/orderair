@@ -1,11 +1,10 @@
 <div class="space-y-6">
-    <div class="flex justify-between">
+    <div class="flex flex-col lg:flex-row justify-between gap-6">
         @livewire('partial.header', [
             'title' => 'Dalam antrian',
         ])
         <div class="flex flex-col lg:flex-row gap-2">
             <input type="text" class="input" placeholder="Cari antrian">
-            <a href="{{ route('order.create') }}" class="btn btn-primary">tambah antrian</a>
         </div>
     </div>
 
