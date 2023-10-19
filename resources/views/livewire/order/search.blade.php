@@ -9,39 +9,39 @@
 
         @if ($cari)
             <div class="overflow-x-auto bg-base-100 rounded shadow">
-        <table class="table whitespace-nowrap">
-            <thead class="border-b-4 border-base-200">
-                <th>Antrian</th>
-                <th>Nama</th>
-                <th>Alamat</th>
-                <th>Waktu pesan</th>
-                <th>Status</th>
-            </thead>
-            <tbody>
-                @foreach ($datas as $data)
-                    <tr>
-                        <td>{{ $data->id }}</td>
-                        <td>
-                            <div class="flex flex-col">
-                                <span>{{ $data->name }}</span>
-                                <span class="text-xs">{{ $data->phone }}</span>
-                            </div>
-                        </td>
-                        <td class="whitespace-normal">{{ $data->address }}</td>
-                        <td>
-                            <div class="flex flex-col">
-                                <span class="text-sm">{{ $data->created_at->format('D, d F Y') }}</span>
-                                <span class="text-xs">{{ $data->created_at->diffForHumans() }}</span>
-                            </div>
-                        </td>
-                        <td>
-                            {{ $data->status }}
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                <table class="table whitespace-nowrap">
+                    <thead class="border-b-4 border-base-200">
+                        <th>Antrian</th>
+                        <th>Nama</th>
+                        <th>Alamat</th>
+                        <th>Waktu pesan</th>
+                        <th>Status</th>
+                    </thead>
+                    <tbody>
+                        @foreach ($datas as $data)
+                            <tr>
+                                <td>{{ $data->id }}</td>
+                                <td>
+                                    <div class="flex flex-col">
+                                        <span>{{ $data->name }}</span>
+                                        <span class="text-xs">{{ $data->phone }}</span>
+                                    </div>
+                                </td>
+                                <td class="whitespace-normal">{{ $data->address }}</td>
+                                <td>
+                                    <div class="flex flex-col">
+                                        <span class="text-sm">{{ $data->created_at->format('D, d F Y') }}</span>
+                                        <span class="text-xs">{{ $data->created_at->diffForHumans() }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    {{ $data->status }}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         @endif
     </div>
 </div>
