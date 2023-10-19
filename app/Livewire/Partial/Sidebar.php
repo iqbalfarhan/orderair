@@ -4,15 +4,17 @@ namespace App\Livewire\Partial;
 
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\On;
+use Illuminate\Support\Facades\Request;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class Sidebar extends Component
 {
-    #[On('reload')]
-    public function reload()
+
+    #[Computed]
+    public function isActive($routename)
     {
-        $this->render();
+        return Request::route()->getName() == $routename ? 'active' : '';
     }
 
     public function logout()
@@ -20,6 +22,8 @@ class Sidebar extends Component
         Auth::logout();
         return redirect()->route('welcome');
     }
+
+
 
     public function render()
     {
