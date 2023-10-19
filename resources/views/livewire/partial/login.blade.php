@@ -8,7 +8,7 @@
                     <input type="text" class="input bg-base-200" placeholder="Username" wire:model="username">
                 </div>
                 <div class="form-control">
-                    <input type="password" class="input bg-base-200" placeholder="Username" wire:model="username">
+                    <input type="password" class="input bg-base-200" placeholder="Password" wire:model="password">
                 </div>
             </div>
             <button class="btn btn-primary">login</button>
