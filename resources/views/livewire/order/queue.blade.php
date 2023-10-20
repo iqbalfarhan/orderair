@@ -35,7 +35,7 @@
                             </div>
                         </td>
                         <td>
-                            <button class="btn btn-xs btn-success" wire:click.prevent="setprogress({{ $data->id }})">
+                            <button class="btn btn-xs btn-success" wire:click.prevent="setprogress({{ $data->id }})" wire:confirm="Antrian ini akan di proses? bila OK status antrian akan berubah menjadi progress">
                                 kirim
                             </button>
                         </td>

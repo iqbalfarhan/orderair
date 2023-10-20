@@ -11,6 +11,7 @@ class Done extends Component
     public function deleteOrder(Order $order)
     {
         $order->delete();
+        $this->dispatch('reload');
     }
 
     public function render()

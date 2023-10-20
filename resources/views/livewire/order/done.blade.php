@@ -32,7 +32,7 @@
                         <td>{{ $data->address }}</td>
                         <td>{{ $data->status_alias }}</td>
                         <td>
-                            <button class="btn btn-xs btn-error" wire:click="deleteOrder({{ $data->id }})">delete</button>
+                            <button class="btn btn-xs btn-error" wire:click="deleteOrder({{ $data->id }})" wire:confirm="anda yakin akan menghapus antrian ini?">delete</button>
                         </td>
                     </tr>
                 @endforeach
