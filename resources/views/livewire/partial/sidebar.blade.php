@@ -24,21 +24,21 @@
                 <a href="{{ route('order.queue') }}" class="{{ $this->isActive('order.queue') }}" wire:navigate>
                     <x-icon name="hourglass" />
                     <span>Masih mengantri</span>
-                    <span class="badge badge-sm">{{ $datas->where('status', 'queue')->count() }}</span>
+                    @livewire('partial.getcount', ['status' => 'queue'], key(1))
                 </a>
             </li>
             <li>
                 <a href="{{ route('order.progress') }}" class="{{ $this->isActive('order.progress') }}" wire:navigate>
                     <x-icon name="garden-cart" />
                     <span>Dalam pengiriman</span>
-                    <span class="badge badge-sm">{{ $datas->where('status', 'progress')->count() }}</span>
+                    @livewire('partial.getcount', ['status' => 'progress'], key(2))
                 </a>
             </li>
             <li>
                 <a href="{{ route('order.done') }}" class="{{ $this->isActive('order.done') }}" wire:navigate>
                     <x-icon name="checkbox" />
                     <span>Selesai diantar</span>
-                    <span class="badge badge-sm">{{ $datas->where('status', 'done')->count() }}</span>
+                    @livewire('partial.getcount', ['status' => 'done'], key(3))
                 </a>
             </li>
         </ul>
