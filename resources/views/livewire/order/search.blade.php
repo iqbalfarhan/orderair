@@ -23,7 +23,9 @@
                     <tbody>
                         @foreach ($datas as $data)
                             <tr>
-                                <td>{{ $data->id }}</td>
+                                <td>
+                                    <a href="{{ route('order.show', $data->id) }}" class="btn btn-ghost btn-circle">{{ $data->id }}</a>
+                                </td>
                                 <td>
                                     <div class="flex flex-col">
                                         <span>{{ $data->name }}</span>

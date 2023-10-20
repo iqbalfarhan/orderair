@@ -16,7 +16,7 @@ class Search extends Component
                 return $q->where('id', $this->cari)
                     ->orWhere('name', "like", '%' . $this->cari . '%')
                     ->orWhere('address', "like", '%' . $this->cari . '%');
-            })->get() : null
+            })->limit(6)->get() : null
         ]);
     }
 }

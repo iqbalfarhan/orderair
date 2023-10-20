@@ -3,12 +3,15 @@
 namespace App\Livewire\Partial;
 
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Rule;
 use Livewire\Component;
 
 class Login extends Component
 {
-
+    #[Rule('required', message: 'Username harus diisi')]
     public $username;
+
+    #[Rule('required', message: 'Password harus diisi')]
     public $password;
 
     public function login()

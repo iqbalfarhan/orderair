@@ -5,20 +5,29 @@
             <div class="form-control">
                 <label for="" class="label">
                     <span class="label-text">Nama pemesan</span>
+                    @error('name')
+                        <span class="label-text-alt text-error">{{ $message }}</span>
+                    @enderror
                 </label>
-                <input type="text" class="input bg-base-200" placeholder="Nama penesan" wire:model="name">
+                <input type="text" class="input @error('name') input-error @enderror bg-base-200" placeholder="Nama penesan" wire:model="name">
             </div>
             <div class="form-control">
                 <label for="" class="label">
                     <span class="label-text">Nomor telpon</span>
+                    @error('phone')
+                        <span class="label-text-alt text-error">{{ $message }}</span>
+                    @enderror
                 </label>
-                <input type="phone" class="input bg-base-200" placeholder="Nomor telpon" wire:model="phone">
+                <input type="phone" class="input @error('phone') input-error @enderror bg-base-200" placeholder="Nomor telpon" wire:model="phone">
             </div>
             <div class="form-control">
                 <label for="" class="label">
                     <span class="label-text">Alamat</span>
+                    @error('address')
+                        <span class="label-text-alt text-error">{{ $message }}</span>
+                    @enderror
                 </label>
-                <textarea type="text" class="textarea bg-base-200" placeholder="Alamat" wire:model="address"></textarea>
+                <textarea type="text" class="textarea @error('address') textarea-error @enderror bg-base-200" placeholder="Alamat" wire:model="address"></textarea>
             </div>
         </div>
         <div class="card-actions">
