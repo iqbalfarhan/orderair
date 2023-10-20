@@ -23,6 +23,8 @@ class Create extends Component
         Order::create($valid);
 
         $this->reset();
+
+        return redirect()->route('order.queue');
     }
 
     public function render()
