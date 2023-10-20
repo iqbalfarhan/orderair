@@ -22,14 +22,16 @@
             <tbody>
                 @foreach ($datas as $data)
                     <tr>
-                        <td>{{ $data->id }}</td>
+                        <td>
+                            <a href="{{ route('order.show', $data->id) }}" class="btn btn-ghost btn-circle">{{ $data->id }}</a>
+                        </td>
                         <td>
                             <div class="flex flex-col">
                                 <span>{{ $data->name }}</span>
                                 <span class="text-xs">{{ $data->phone }}</span>
                             </div>
                         </td>
-                        <td>{{ $data->address }}</td>
+                        <td class="whitespace-normal">{{ $data->address }}</td>
                         <td>{{ $data->status_alias }}</td>
                         <td>
                             <button class="btn btn-xs btn-error" wire:click="deleteOrder({{ $data->id }})" wire:confirm="anda yakin akan menghapus antrian ini?">delete</button>

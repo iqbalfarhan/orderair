@@ -29,4 +29,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/order/progress', App\Livewire\Order\Progress::class)->name('order.progress');
     Route::get('/order/done', App\Livewire\Order\Done::class)->name('order.done');
     Route::get('/order/create', App\Livewire\Order\Create::class)->name('order.create');
+    Route::get('/order/{order}', App\Livewire\Order\Show::class)->name('order.show');
 });

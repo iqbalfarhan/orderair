@@ -4,7 +4,7 @@
         <div class="py-4 space-y-4">
             <div class="form-control">
                 <label for="" class="label">
-                    <span class="label-text">Nama yang memesan</span>
+                    <span class="label-text">Nama pemesan</span>
                 </label>
                 <input type="text" class="input bg-base-200" placeholder="Nama penesan" wire:model="name">
             </div>

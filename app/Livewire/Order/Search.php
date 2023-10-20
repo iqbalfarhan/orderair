@@ -13,7 +13,9 @@ class Search extends Component
     {
         return view('livewire.order.search', [
             'datas' => $this->cari ? Order::when($this->cari, function ($q) {
-                return $q->where('id', $this->cari)->orWhere('name', "like", '%' . $this->cari . '%');
+                return $q->where('id', $this->cari)
+                    ->orWhere('name', "like", '%' . $this->cari . '%')
+                    ->orWhere('address', "like", '%' . $this->cari . '%');
             })->get() : null
         ]);
     }

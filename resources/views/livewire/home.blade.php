@@ -30,5 +30,22 @@
         </div>
     </div>
 
-    @livewire('order.search')
+    <div class="space-y-3">
+        <h2 class="text-lg">
+            Pencarian pesanan
+        </h2>
+        @livewire('order.search')
+    </div>
+
+    <div class="space-y-3">
+        <h2 class="text-lg">
+            Lainnya
+        </h2>
+        <div>
+            <a href="{{ route('order.create') }}" class="btn btn-primary">
+                <x-icon name="circle-plus" />
+                <span>tambah antrean</span>
+            </a>
+        </div>
+    </div>
 </div>

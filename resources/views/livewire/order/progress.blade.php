@@ -18,14 +18,16 @@
             <tbody>
                 @foreach ($datas as $data)
                     <tr>
-                        <td>{{ $data->id }}</td>
+                        <td>
+                            <a href="{{ route('order.show', $data->id) }}" class="btn btn-ghost btn-circle">{{ $data->id }}</a>
+                        </td>
                         <td>
                             <div class="flex flex-col">
                                 <span>{{ $data->name }}</span>
                                 <span class="text-xs">{{ $data->phone }}</span>
                             </div>
                         </td>
-                        <td>{{ $data->address }}</td>
+                        <td class="whitespace-normal">{{ $data->address }}</td>
                         <td>
                             <div class="flex space-x-1">
                                 <button class="btn btn-xs btn-primary" wire:click="setdone({{ $data->id }})" wire:confirm="Apakah anda sudah memastikan bahwa pemesanan ini sudah dikirimkan?">selesaikan</button>
