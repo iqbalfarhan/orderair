@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('address');
             $table->string('phone');
             $table->enum('status', ['queue', 'progress', 'done'])->default('queue');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

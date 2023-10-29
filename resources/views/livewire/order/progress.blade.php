@@ -30,7 +30,7 @@
                         <td class="whitespace-normal">{{ $data->address }}</td>
                         <td>
                             <div class="flex space-x-1">
-                                <button class="btn btn-xs btn-primary" wire:click="setdone({{ $data->id }})" wire:confirm="Apakah anda sudah memastikan bahwa pemesanan ini sudah dikirimkan?">selesaikan</button>
+                                <button class="btn btn-xs btn-primary" wire:click.prevent="$dispatch('setDone', [{{ $data->id }}])">selesaikan</button>
                             </div>
                         </td>
                     </tr>
@@ -38,4 +38,5 @@
             </tbody>
         </table>
     </div>
+    @livewire('order.set-done')
 </div>

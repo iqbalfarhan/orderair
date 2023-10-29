@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Order extends Model
 {
@@ -14,6 +15,7 @@ class Order extends Model
         'address',
         'phone',
         'status',
+        'photo',
     ];
 
     public function getStatusAliasAttribute()
@@ -34,5 +36,9 @@ class Order extends Model
             return 'success';
         if ($this->status == 'done')
             return 'primary';
+    }
+
+    public function getImageUrlAtrtAttribute(){
+        return $this->photo ? Storage::url($this->photo) : url('/noimage.jpg');
     }
 }

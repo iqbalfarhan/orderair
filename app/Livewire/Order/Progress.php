@@ -7,16 +7,9 @@ use Livewire\Component;
 
 class Progress extends Component
 {
-    public function setdone(Order $order)
-    {
-        $order->update([
-            'status' => 'done'
-        ]);
 
-        $this->dispatch('reload');
-        $this->render();
-    }
-
+    protected $listeners = ['reload' => '$refresh'];
+    
     public function render()
     {
         return view('livewire.order.progress', [
