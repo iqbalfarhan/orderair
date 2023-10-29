@@ -8,7 +8,12 @@
                     <label for="" class="label">
                         <span class="label-text">Bukti pengiriman</span>
                     </label>
-                    <input type="file" class="file-inpue @error('photo') file-inpue-error @enderror" wire:model.live='photo' accept="image/*">
+                    <input type="file" class="file-input @error('photo') file-input-error @enderror" wire:model.live='photo' accept="image/*">
+                    @error('photo')
+                    <label for="" class="label">
+                        <span class="label-text text-sm">Photo bukti pengiriman harus diisi</span>
+                    </label>
+                    @enderror
 
                     @if ($photo)
                         <div class="avatar">
