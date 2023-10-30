@@ -8,6 +8,8 @@
         <a href="{{ route('home') }}" class="btn btn-ghost normal-case text-xl">{{ config('app.name') }}</a>
     </div>
     <div class="flex-none">
-        
+        <button class="btn btn-ghost">
+            {{ auth()->user()->name }}
+        </button>
     </div>
 </div>

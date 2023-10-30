@@ -17,6 +17,9 @@ class Edit extends Component
     use WithFileUploads;
 
     #[Rule('required', message: 'Harus diisi')]
+    public $status;
+
+    #[Rule('required', message: 'Harus diisi')]
     public $name;
 
     #[Rule('required', message: 'Harus diisi')]
@@ -63,6 +66,7 @@ class Edit extends Component
 
         $this->order_id = $order->id;
         $this->name = $order->name;
+        $this->status = $order->status;
         $this->phone = $order->phone;
         $this->address = $order->address;
     }

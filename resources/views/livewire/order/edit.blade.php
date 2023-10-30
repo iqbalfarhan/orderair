@@ -51,6 +51,21 @@
                 </label>
                 <textarea type="text" class="textarea @error('address') textarea-error @enderror bg-base-200" placeholder="Alamat" wire:model="address"></textarea>
             </div>
+            @can('order.changeStatus')
+                <div class="form-control">
+                    <label for="" class="label">
+                        <span class="label-text">Status order</span>
+                        @error('status')
+                            <span class="label-text-alt text-error">{{ $message }}</span>
+                        @enderror
+                    </label>
+                    <select class="select @error('status') select-error @enderror bg-base-200" placeholder="Nomor telpon" wire:model="status">
+                        <option value="queue">Antrian</option>
+                        <option value="progress">Progress</option>
+                        <option value="done">Selesai</option>
+                    </select>
+                </div>
+            @endcan
         </div>
         <div class="card-actions">
             <button class="btn btn-primary">Simpan</button>

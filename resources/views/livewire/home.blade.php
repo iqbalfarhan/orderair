@@ -43,7 +43,7 @@
         </h2>
         <div>
             <a href="{{ route('order.create') }}" class="btn btn-primary">
-                <x-icon name="circle-plus" />
+                <x-tabler-circle-plus class="w-4 h-4" />
                 <span>tambah antrean</span>
             </a>
         </div>

@@ -15,7 +15,9 @@
                 <th>Nama</th>
                 <th>Alamat</th>
                 <th>Waktu pesan</th>
-                <th>bukti transfer</th>
+                @can('order.showTransferImage')
+                    <th>bukti transfer</th>
+                @endcan
                 <th>Action</th>
             </thead>
             <tbody>
@@ -37,18 +39,28 @@
                                 <span class="text-xs">{{ $data->created_at->diffForHumans() }}</span>
                             </div>
                         </td>
+                        @can('order.showTransferImage')    
+                            <td>
+                                <button class="avatar" wire:click.prevent="$dispatch('showImage', ['{{ $data->transfer_url }}'])">
+                                    <div class="w-12 rounded-lg">
+                                        <img src="{{ $data->transfer_url }}" alt="">
+                                    </div>
+                                </button>
+                            </td>
+                        @endcan
                         <td>
-                            <button class="avatar" wire:click.prevent="$dispatch('showImage', ['{{ $data->transfer_url }}'])">
-                                <div class="w-12 rounded-lg">
-                                    <img src="{{ $data->transfer_url }}" alt="">
-                                </div>
-                            </button>
-                        </td>
-                        <td>
-                            <a href="{{ route('order.edit', $data->id) }}" class="btn btn-xs btn-success">edit</a>
-                            <button class="btn btn-xs btn-success" wire:click.prevent="setprogress({{ $data->id }})" wire:confirm="Antrian ini akan di proses? bila OK status antrian akan berubah menjadi progress">
-                                kirim
-                            </button>
+                            <div class="flex gap-1">
+                                @can('order.edit')
+                                    <a href="{{ route('order.edit', $data->id) }}" class="btn btn-xs btn-success btn-square">
+                                        <x-tabler-edit class="w-4 h-4" />
+                                    </a>
+                                @endcan
+                                @can('order.setProgress')
+                                    <button class="btn btn-xs btn-primary" wire:click.prevent="setprogress({{ $data->id }})" wire:confirm="Antrian ini akan di proses? bila OK status antrian akan berubah menjadi progress">
+                                        proses
+                                    </button>
+                                @endcan
+                            </div>
                         </td>
                     </tr>
                 @endforeach

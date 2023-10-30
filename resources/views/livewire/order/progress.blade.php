@@ -13,6 +13,10 @@
                 <th>Antrian</th>
                 <th>Nama</th>
                 <th>Alamat</th>
+                <th>Waktu pesan</th>
+                @can('order.showTransferImage')
+                    <th>bukti transfer</th>
+                @endcan
                 <th>Action</th>
             </thead>
             <tbody>
@@ -29,8 +33,31 @@
                         </td>
                         <td class="whitespace-normal">{{ $data->address }}</td>
                         <td>
+                            <div class="flex flex-col">
+                                <span class="text-sm">{{ $data->created_at->format('D, d F Y') }}</span>
+                                <span class="text-xs">{{ $data->created_at->diffForHumans() }}</span>
+                            </div>
+                        </td>
+                        @can('order.showTransferImage')    
+                            <td>
+                                <button class="avatar" wire:click.prevent="$dispatch('showImage', ['{{ $data->transfer_url }}'])">
+                                    <div class="w-12 rounded-lg">
+                                        <img src="{{ $data->transfer_url }}" alt="">
+                                    </div>
+                                </button>
+                            </td>
+                        @endcan
+                        <td>
                             <div class="flex space-x-1">
-                                <button class="btn btn-xs btn-primary" wire:click.prevent="$dispatch('setDone', [{{ $data->id }}])">selesaikan</button>
+                                @can('order.edit')
+                                    <a href="{{ route('order.edit', $data->id) }}" class="btn btn-xs btn-success btn-square">
+                                        <x-tabler-edit class="w-4 h-4" />
+                                    </a>
+                                @endcan
+                                {{-- <button class="btn btn-xs btn-primary" wire:click.prevent="$dispatch('setDone', [{{ $data->id }}])">selesaikan</button> --}}
+                                @can('order.setDone')
+                                    <button class="btn btn-xs btn-primary" wire:click.prevent="setDone({{ $data->id }})" wire:confirm="Yakin ubah status order ke done?">selesaikan</button>
+                                @endcan
                             </div>
                         </td>
                     </tr>

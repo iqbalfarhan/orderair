@@ -10,14 +10,18 @@
             @endguest
         </div>
     </div>
+
     <div class="overflow-x-auto bg-base-100 rounded shadow">
         <table class="table whitespace-nowrap">
             <thead class="border-b-4 border-base-200">
                 <th>Antrian</th>
                 <th>Nama</th>
                 <th>Alamat</th>
+                <th>Waktu pesan</th>
+                @can('order.showTransferImage')
+                    <th>bukti transfer</th>
+                @endcan
                 <th>Status</th>
-                <th>Eviden</th>
                 <th>Action</th>
             </thead>
             <tbody>
@@ -32,17 +36,43 @@
                                 <span class="text-xs">{{ $data->phone }}</span>
                             </div>
                         </td>
-                        <td class="whitespace-normal">{{ $data->address }}</td>
-                        <td>{{ $data->status_alias }}</td>
+                        <td class="whitespace-normal">{{ Str::limit($data->address, 50) }}</td>
                         <td>
+                            <div class="flex flex-col">
+                                <span class="text-sm">{{ $data->created_at->format('D, d F Y') }}</span>
+                                <span class="text-xs">{{ $data->created_at->diffForHumans() }}</span>
+                            </div>
+                        </td>
+                        @can('order.showTransferImage')    
+                            <td>
+                                <button class="avatar" wire:click.prevent="$dispatch('showImage', ['{{ $data->transfer_url }}'])">
+                                    <div class="w-12 rounded-lg">
+                                        <img src="{{ $data->transfer_url }}" alt="">
+                                    </div>
+                                </button>
+                            </td>
+                        @endcan
+                        <td>{{ $data->status_alias }}</td>
+                        {{-- <td>
                             <button class="avatar" wire:click.prevent="$dispatch('showImage', ['{{ $data->image_url }}'])">
                                 <div class="w-24 rounded-lg">
                                     <img src="{{ $data->image_url }}" alt="{{ $data->image_url }}">
                                 </div>
                             </button>
-                        </td>
+                        </td> --}}
                         <td>
-                            <button class="btn btn-xs btn-error" wire:click="deleteOrder({{ $data->id }})" wire:confirm="anda yakin akan menghapus antrian ini?">delete</button>
+                            <div class="flex gap-1">
+                                @can('order.edit')
+                                    <a href="{{ route('order.edit', $data->id) }}" class="btn btn-xs btn-success btn-square">
+                                        <x-tabler-edit class="w-4 h-4" />
+                                    </a>
+                                @endcan
+                                @can('order.delete')
+                                    <button class="btn btn-xs btn-error btn-square" wire:click="deleteOrder({{ $data->id }})" wire:confirm="anda yakin akan menghapus antrian ini?">
+                                        <x-tabler-trash class="w-4 h-4" />
+                                    </button>
+                                @endcan
+                            </div>
                         </td>
                     </tr>
                 @endforeach

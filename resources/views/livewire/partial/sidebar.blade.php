@@ -4,7 +4,7 @@
         <ul>
             <li>
                 <a href="{{ route('home') }}" class="{{ $this->isActive('home') }}" wire:navigate>
-                    <x-icon name="dashboard" />
+                    <x-tabler-dashboard class="w-5 h-5" />
                     <span>Dashboard</span>
                 </a>
             </li>
@@ -14,42 +14,68 @@
     <li>
         <h2 class="menu-title">Pemesanan</h2>
         <ul>
-            <li>
-                <a href="{{ route('order.create') }}" class="{{ $this->isActive('order.create') }}" wire:navigate>
-                    <x-icon name="circle-plus" />
-                    <span>Tambah antrian</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('order.queue') }}" class="{{ $this->isActive('order.queue') }}" wire:navigate>
-                    <x-icon name="hourglass" />
-                    <span>Masih mengantri</span>
-                    @livewire('partial.getcount', ['status' => 'queue'], key(1))
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('order.progress') }}" class="{{ $this->isActive('order.progress') }}" wire:navigate>
-                    <x-icon name="garden-cart" />
-                    <span>Dalam pengiriman</span>
-                    @livewire('partial.getcount', ['status' => 'progress'], key(2))
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('order.done') }}" class="{{ $this->isActive('order.done') }}" wire:navigate>
-                    <x-icon name="checkbox" />
-                    <span>Selesai diantar</span>
-                    @livewire('partial.getcount', ['status' => 'done'], key(3))
-                </a>
-            </li>
+            @can('order.create')
+                <li>
+                    <a href="{{ route('order.create') }}" class="{{ $this->isActive('order.create') }}" wire:navigate>
+                        <x-tabler-circle-plus class="w-5 h-5" />
+                        <span>Tambah antrian</span>
+                    </a>
+                </li>
+            @endcan
+            @can('order.queue')
+                <li>
+                    <a href="{{ route('order.queue') }}" class="{{ $this->isActive('order.queue') }}" wire:navigate>
+                        <x-tabler-hourglass class="w-5 h-5" />
+                        <span>Masih mengantri</span>
+                        @livewire('partial.getcount', ['status' => 'queue'], key(1))
+                    </a>
+                </li>
+            @endcan
+            @can('order.progress')
+                <li>
+                    <a href="{{ route('order.progress') }}" class="{{ $this->isActive('order.progress') }}" wire:navigate>
+                        <x-tabler-garden-cart class="w-5 h-5" />
+                        <span>Dalam pengiriman</span>
+                        @livewire('partial.getcount', ['status' => 'progress'], key(2))
+                    </a>
+                </li>
+            @endcan
+            @can('order.done')
+                <li>
+                    <a href="{{ route('order.done') }}" class="{{ $this->isActive('order.done') }}" wire:navigate>
+                        <x-tabler-checkbox class="w-5 h-5" />
+                        <span>Selesai diantar</span>
+                        @livewire('partial.getcount', ['status' => 'done'], key(3))
+                    </a>
+                </li>
+            @endcan
         </ul>
     </li>
     
    <li>
-        <h2 class="menu-title">Lainnyat</h2>
+        <h2 class="menu-title">Lainnya</h2>
         <ul>
-             <li>
+            @can('permission.index')
+                <li>
+                    <a href="{{ route('permission.index') }}" class="{{ $this->isActive('permission.index') }}" wire:navigate>
+                        <x-tabler-key class="w-5 h-5" />
+                        <span>Permission</span>
+                    </a>
+                </li>
+            @endcan
+
+            @can('user.index')    
+                <li>
+                    <a href="{{ route('user.index') }}" class="{{ $this->isActive('user.index') }}" wire:navigate>
+                        <x-tabler-users class="w-5 h-5" />
+                        <span>User mangement</span>
+                    </a>
+                </li>
+            @endcan
+
+            <li>
                 <button wire:click="logout">
-                    <x-icon name="logout" />
+                    <x-tabler-logout class="w-5 h-5" />
                     <span>Logout</span>
                 </button>
             </li>
