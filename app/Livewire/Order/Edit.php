@@ -9,8 +9,11 @@ use Livewire\Attributes\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class Create extends Component
+class Edit extends Component
 {
+    public Order $order;
+    public $order_id;
+
     use WithFileUploads;
 
     #[Rule('required', message: 'Harus diisi')]
@@ -35,7 +38,7 @@ class Create extends Component
 
         if ($this->buktibayar) {
             $this->validate([
-                'buktibayar' => "",
+                'buktibayar' => "required",
             ]);
 
             $filename = $this->buktibayar->hashName('transfers');
@@ -47,15 +50,25 @@ class Create extends Component
 
         }
 
-        Order::create($valid);
+        Order::find($this->order_id)->update($valid);
 
         $this->reset();
 
         return redirect()->route('order.queue');
     }
 
+    public function mount(Order $order)
+    {
+        $this->order = $order;
+
+        $this->order_id = $order->id;
+        $this->name = $order->name;
+        $this->phone = $order->phone;
+        $this->address = $order->address;
+    }
+
     public function render()
     {
-        return view('livewire.order.create');
+        return view('livewire.order.edit');
     }
 }

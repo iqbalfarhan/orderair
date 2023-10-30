@@ -34,6 +34,12 @@
                             <img src="{{ $buktibayar->temporaryUrl() }}" alt="">
                         </div>
                     </div>
+                @else
+                    <div class="avatar">
+                        <div class="w-56 rounded-lg">
+                            <img src="{{ $order->transfer_url }}" alt="">
+                        </div>
+                    </div>
                 @endif
             </div>
             <div class="form-control">

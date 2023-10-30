@@ -15,6 +15,7 @@
                 <th>Nama</th>
                 <th>Alamat</th>
                 <th>Waktu pesan</th>
+                <th>bukti transfer</th>
                 <th>Action</th>
             </thead>
             <tbody>
@@ -37,6 +38,14 @@
                             </div>
                         </td>
                         <td>
+                            <button class="avatar" wire:click.prevent="$dispatch('showImage', ['{{ $data->transfer_url }}'])">
+                                <div class="w-12 rounded-lg">
+                                    <img src="{{ $data->transfer_url }}" alt="">
+                                </div>
+                            </button>
+                        </td>
+                        <td>
+                            <a href="{{ route('order.edit', $data->id) }}" class="btn btn-xs btn-success">edit</a>
                             <button class="btn btn-xs btn-success" wire:click.prevent="setprogress({{ $data->id }})" wire:confirm="Antrian ini akan di proses? bila OK status antrian akan berubah menjadi progress">
                                 kirim
                             </button>

@@ -30,4 +30,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/order/done', App\Livewire\Order\Done::class)->name('order.done');
     Route::get('/order/create', App\Livewire\Order\Create::class)->name('order.create');
     Route::get('/order/{order}', App\Livewire\Order\Show::class)->name('order.show');
+    Route::get('/order/{order}/edit', App\Livewire\Order\Edit::class)->name('order.edit');
 });

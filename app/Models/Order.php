@@ -16,6 +16,7 @@ class Order extends Model
         'phone',
         'status',
         'photo',
+        'buktibayar',
     ];
 
     public function getStatusAliasAttribute()
@@ -41,5 +42,10 @@ class Order extends Model
     public function getImageUrlAttribute()
     {
         return $this->photo ? Storage::url($this->photo) : url('/noimage.jpg');
+    }
+
+    public function getTransferUrlAttribute()
+    {
+        return $this->buktibayar ? Storage::url($this->buktibayar) : url('/noimage.jpg');
     }
 }
