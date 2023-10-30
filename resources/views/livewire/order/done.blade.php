@@ -35,11 +35,11 @@
                         <td class="whitespace-normal">{{ $data->address }}</td>
                         <td>{{ $data->status_alias }}</td>
                         <td>
-                            <div class="avatar">
-                                <div class="w-24 rounded">
-                                    <img src="{{ $data->image_url }}" alt="">
+                            <button class="avatar" wire:click.prevent="$dispatch('showImage', ['{{ $data->image_url }}'])">
+                                <div class="w-24 rounded-lg">
+                                    <img src="{{ $data->image_url }}" alt="{{ $data->image_url }}">
                                 </div>
-                            </div>
+                            </button>
                         </td>
                         <td>
                             <button class="btn btn-xs btn-error" wire:click="deleteOrder({{ $data->id }})" wire:confirm="anda yakin akan menghapus antrian ini?">delete</button>

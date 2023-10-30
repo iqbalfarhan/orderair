@@ -19,6 +19,7 @@
                     <div class="container mx-auto max-w-6xl p-6">
                         {{ $slot }}
                     </div>
+                    @livewire('partial.show-image')
                 </div> 
                 <div class="drawer-side">
                     <label for="drawer" aria-label="close sidebar" class="drawer-overlay"></label>

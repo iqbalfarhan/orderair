@@ -16,19 +16,21 @@ class SetDone extends Component
 
     #[Rule("required", "photo harus diisi")]
     public $photo;
-    
+
     public $show;
 
     public $order_id;
 
     #[On('setDone')]
-    public function getSetDone(Order $order){
-        $this->order_id = $order->id;
+    public function getSetDone($order_id)
+    {
+        $this->order_id = $order_id;
         $this->show = true;
     }
-    
 
-    public function simpan(){
+
+    public function simpan()
+    {
         $valid = $this->validate([
             'photo' => 'required',
             'order_id' => 'required',

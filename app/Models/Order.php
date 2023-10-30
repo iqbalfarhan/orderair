@@ -38,7 +38,8 @@ class Order extends Model
             return 'primary';
     }
 
-    public function getImageUrlAtrtAttribute(){
+    public function getImageUrlAttribute()
+    {
         return $this->photo ? Storage::url($this->photo) : url('/noimage.jpg');
     }
 }
