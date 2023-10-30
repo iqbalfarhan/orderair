@@ -32,7 +32,7 @@ class SetDone extends Component
     public function simpan()
     {
         $valid = $this->validate([
-            'photo' => 'required',
+            'photo' => '',
             'order_id' => 'required',
             'show' => 'required',
         ]);
@@ -47,10 +47,11 @@ class SetDone extends Component
 
             if (Storage::put($filename, $makeImage)) {
                 $valid['photo'] = $filename;
-                $valid['status'] = 'done';
             }
 
         }
+
+        $valid['status'] = 'done';
 
         Order::find($this->order_id)->update($valid);
 
