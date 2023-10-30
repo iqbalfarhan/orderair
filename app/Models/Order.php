@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\CarbonDatetime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -17,6 +18,11 @@ class Order extends Model
         'status',
         'photo',
         'buktibayar',
+        'selesai_at'
+    ];
+
+    protected $casts = [
+        'selesai_at' => CarbonDatetime::class
     ];
 
     public function getStatusAliasAttribute()

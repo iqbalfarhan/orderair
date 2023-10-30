@@ -15,7 +15,8 @@ class Progress extends Component
     public function setDone(Order $order)
     {
         $order->update([
-            'status' => 'done'
+            'status' => 'done',
+            'selesai_at' => now()
         ]);
 
         $this->alert('success', 'Status order telah diubah jadi done');

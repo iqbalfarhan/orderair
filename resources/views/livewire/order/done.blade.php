@@ -17,7 +17,7 @@
                 <th>Antrian</th>
                 <th>Nama</th>
                 <th>Alamat</th>
-                <th>Waktu pesan</th>
+                <th>Pesanan berakhir</th>
                 @can('order.showTransferImage')
                     <th>bukti transfer</th>
                 @endcan
@@ -38,10 +38,12 @@
                         </td>
                         <td class="whitespace-normal">{{ Str::limit($data->address, 50) }}</td>
                         <td>
-                            <div class="flex flex-col">
-                                <span class="text-sm">{{ $data->created_at->format('D, d F Y') }}</span>
-                                <span class="text-xs">{{ $data->created_at->diffForHumans() }}</span>
-                            </div>
+                            @if ($data->selesai_at)
+                                <div class="flex flex-col">
+                                    <span class="text-sm">{{ $data->selesai_at->format('D, d F Y') }}</span>
+                                    <span class="text-xs">{{ $data->selesai_at->diffForHumans() }}</span>
+                                </div>
+                            @endif
                         </td>
                         @can('order.showTransferImage')    
                             <td>
