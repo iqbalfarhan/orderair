@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(PermissionSeeder::class);
 
-        Order::factory(30)->create();
+        // Order::factory(30)->create();
 
         $super = User::factory()->create([
             'name' => 'Superadmin',
