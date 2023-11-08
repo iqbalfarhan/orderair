@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('can:permission.index')->get('/permission', App\Livewire\Permission\Index::class)->name('permission.index');
     Route::middleware('can:user.index')->get('/user', App\Livewire\User\Index::class)->name('user.index');
+    Route::middleware('can:jadwal.index')->get('/jadwal', App\Livewire\Jadwal\Index::class)->name('jadwal.index');
+
+    Route::middleware('can:setting.index')->get('/setting', App\Livewire\Setting\Index::class)->name('setting.index');
 
     Route::middleware('can:order.queue')->get('/order', App\Livewire\Order\Queue::class)->name('order.queue');
     Route::middleware('can:order.progress')->get('/order/progress', App\Livewire\Order\Progress::class)->name('order.progress');

@@ -8,7 +8,7 @@ class Header extends Component
 {
 
     public $title = "Aplikasi order air";
-    public $desc = "telkom regional 6";
+    public $desc;
 
     public function render()
     {

@@ -18,7 +18,8 @@ class Order extends Model
         'status',
         'photo',
         'buktibayar',
-        'selesai_at'
+        'selesai_at',
+        'kirim_at'
     ];
 
     protected $casts = [

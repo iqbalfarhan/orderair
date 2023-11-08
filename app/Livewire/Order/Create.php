@@ -3,6 +3,7 @@
 namespace App\Livewire\Order;
 
 use App\Models\Order;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Livewire\Attributes\Rule;
@@ -25,12 +26,26 @@ class Create extends Component
     #[Rule('image', message: 'Harus berisi file gambar')]
     public $buktibayar;
 
+    #[Rule('date', message: 'Harus dalam format YYYY-MM-DD')]
+    public $kirim_at;
+
+    public function updatedKirimAt($kirim_at)
+    {
+        $limit = Setting::where('key', 'LIMIT_KIRIM_PER_HARI')->first()->value;
+        $count = Order::where('kirim_at', $kirim_at)->count();
+
+        if ($count > $limit) {
+            $this->addError('kirim_at', 'Out of limit');
+        }
+    }
+
     public function simpan()
     {
         $valid = $this->validate([
             "name" => "required",
             "phone" => "required",
-            "address" => "required"
+            "address" => "required",
+            "kirim_at" => ""
         ]);
 
         if ($this->buktibayar) {

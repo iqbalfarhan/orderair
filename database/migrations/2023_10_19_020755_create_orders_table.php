@@ -17,7 +17,10 @@ return new class extends Migration {
             $table->string('phone');
             $table->enum('status', ['queue', 'progress', 'done'])->default('queue');
             $table->string('photo')->nullable();
+            $table->date('kirim_at')->nullable();
             $table->timestamps();
+
+            $table->index('kirim_at');
         });
     }
 

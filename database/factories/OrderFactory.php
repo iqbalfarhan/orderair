@@ -21,6 +21,7 @@ class OrderFactory extends Factory
             'address' => fake()->address(),
             'phone' => fake()->phoneNumber(),
             'status' => fake()->randomElement(['queue', 'progress', 'done']),
+            'kirim_at' => date('Y-m-d'),
         ];
     }
 }

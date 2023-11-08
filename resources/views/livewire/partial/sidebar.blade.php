@@ -8,6 +8,14 @@
                     <span>Dashboard</span>
                 </a>
             </li>
+            @can('jadwal.index')
+                <li>
+                    <a href="{{ route('jadwal.index') }}" class="{{ $this->isActive('jadwal.index') }}" wire:navigate>
+                        <x-tabler-calendar class="w-5 h-5" />
+                        <span>Jadwal pengiriman</span>
+                    </a>
+                </li>
+            @endcan
         </ul>
     </li>
 
@@ -51,20 +59,30 @@
             @endcan
         </ul>
     </li>
-    
-   <li>
+
+    <li>
         <h2 class="menu-title">Lainnya</h2>
         <ul>
-            @can('permission.index')
+            @can('setting.index')
                 <li>
-                    <a href="{{ route('permission.index') }}" class="{{ $this->isActive('permission.index') }}" wire:navigate>
-                        <x-tabler-key class="w-5 h-5" />
-                        <span>Permission</span>
+                    <a href="{{ route('setting.index') }}" class="{{ $this->isActive('setting.index') }}" wire:navigate>
+                        <x-tabler-settings class="w-5 h-5" />
+                        <span>Pengaturan App</span>
                     </a>
                 </li>
             @endcan
 
-            @can('user.index')    
+            @can('permission.index')
+                <li>
+                    <a href="{{ route('permission.index') }}" class="{{ $this->isActive('permission.index') }}"
+                        wire:navigate>
+                        <x-tabler-key class="w-5 h-5" />
+                        <span>App Permission</span>
+                    </a>
+                </li>
+            @endcan
+
+            @can('user.index')
                 <li>
                     <a href="{{ route('user.index') }}" class="{{ $this->isActive('user.index') }}" wire:navigate>
                         <x-tabler-users class="w-5 h-5" />
@@ -80,5 +98,5 @@
                 </button>
             </li>
         </ul>
-   </li>
+    </li>
 </ul>
