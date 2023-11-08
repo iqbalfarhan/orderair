@@ -4,6 +4,7 @@ namespace App\Livewire\Order;
 
 use App\Models\Order;
 use App\Models\Setting;
+use App\Rules\LimitkirimRule;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Livewire\Attributes\Rule;
@@ -31,12 +32,9 @@ class Create extends Component
 
     public function updatedKirimAt($kirim_at)
     {
-        $limit = Setting::where('key', 'LIMIT_KIRIM_PER_HARI')->first()->value;
-        $count = Order::where('kirim_at', $kirim_at)->count();
-
-        if ($count > $limit) {
-            $this->addError('kirim_at', 'Out of limit');
-        }
+        $this->validate([
+            'kirim_at' => new LimitkirimRule
+        ]);
     }
 
     public function simpan()
@@ -45,7 +43,7 @@ class Create extends Component
             "name" => "required",
             "phone" => "required",
             "address" => "required",
-            "kirim_at" => ""
+            "kirim_at" => new LimitkirimRule
         ]);
 
         if ($this->buktibayar) {
