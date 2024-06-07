@@ -1,23 +1,19 @@
 <div class="space-y-6">
     <div class="flex justify-between items-center gap-6">
         @livewire('partial.header', [
-            'title' => 'App user',
-            'desc' => 'Akses fitur'
+            'title' => 'User management',
+            'desc' => 'Akses fitur',
         ])
 
         <div>
-            <label for="createModal" class="btn">
+            <label for="createModal" class="btn btn-primary">
                 <x-tabler-plus class="w-5 h-5" />
                 <span class="hidden lg:block">create user</span>
             </label>
         </div>
     </div>
 
-    <div>
-        <input type="text" class="input" placeholder="Cari user" wire:model.live="cari">
-    </div>
-
-    <div class="overflow-x-auto bg-base-100 shadow rounded-lg">
+    <div class="table-wrapper">
         <table class="table whitespace-nowrap">
             <thead class="border-b-4 border-base-200">
                 <th>ID</th>
@@ -35,12 +31,15 @@
                         <td>{{ $data->getRoleNames()->first() }}</td>
                         <td>
                             @can('user.edit')
-                                <button class="btn btn-xs btn-success btn-square" wire:click="$dispatch('editUser', [{{ $data->id }}])">
+                                <button class="btn btn-xs btn-success btn-square"
+                                    wire:click="$dispatch('editUser', [{{ $data->id }}])">
                                     <x-tabler-edit class="w-4 h-4" />
                                 </button>
                             @endcan
                             @can('user.delete')
-                                <button class="btn btn-xs btn-error btn-square" wire:confirm="Anda yakin akan menhapus user ini" wire:click="deleteuser({{ $data->id }})">
+                                <button class="btn btn-xs btn-error btn-square"
+                                    wire:confirm="Anda yakin akan menhapus user ini"
+                                    wire:click="deleteuser({{ $data->id }})">
                                     <x-tabler-trash class="w-4 h-4" />
                                 </button>
                             @endcan

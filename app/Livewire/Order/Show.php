@@ -3,16 +3,22 @@
 namespace App\Livewire\Order;
 
 use App\Models\Order;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Show extends Component
 {
+    public ?Order $order;
 
-    public Order $order;
-
-    public function back()
+    #[On('orderShow')]
+    public function orderShow(Order $order)
     {
-        return back();
+        $this->order = $order;
+    }
+
+    public function closeModal()
+    {
+        $this->reset('order');
     }
 
     public function render()

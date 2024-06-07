@@ -4,14 +4,14 @@
         <ul>
             <li>
                 <a href="{{ route('home') }}" class="{{ $this->isActive('home') }}" wire:navigate>
-                    <x-tabler-dashboard class="w-5 h-5" />
+                    <x-tabler-dashboard class="size-5" />
                     <span>Dashboard</span>
                 </a>
             </li>
             @can('jadwal.index')
                 <li>
                     <a href="{{ route('jadwal.index') }}" class="{{ $this->isActive('jadwal.index') }}" wire:navigate>
-                        <x-tabler-calendar class="w-5 h-5" />
+                        <x-tabler-calendar class="size-5" />
                         <span>Jadwal pengiriman</span>
                     </a>
                 </li>
@@ -25,7 +25,7 @@
             @can('order.create')
                 <li>
                     <a href="{{ route('order.create') }}" class="{{ $this->isActive('order.create') }}" wire:navigate>
-                        <x-tabler-circle-plus class="w-5 h-5" />
+                        <x-tabler-circle-plus class="size-5" />
                         <span>Tambah antrian</span>
                     </a>
                 </li>
@@ -33,7 +33,7 @@
             @can('order.queue')
                 <li>
                     <a href="{{ route('order.queue') }}" class="{{ $this->isActive('order.queue') }}" wire:navigate>
-                        <x-tabler-hourglass class="w-5 h-5" />
+                        <x-tabler-hourglass class="size-5" />
                         <span>Masih mengantri</span>
                         @livewire('partial.getcount', ['status' => 'queue'], key(1))
                     </a>
@@ -42,7 +42,7 @@
             @can('order.progress')
                 <li>
                     <a href="{{ route('order.progress') }}" class="{{ $this->isActive('order.progress') }}" wire:navigate>
-                        <x-tabler-garden-cart class="w-5 h-5" />
+                        <x-tabler-garden-cart class="size-5" />
                         <span>Dalam pengiriman</span>
                         @livewire('partial.getcount', ['status' => 'progress'], key(2))
                     </a>
@@ -51,7 +51,7 @@
             @can('order.done')
                 <li>
                     <a href="{{ route('order.done') }}" class="{{ $this->isActive('order.done') }}" wire:navigate>
-                        <x-tabler-checkbox class="w-5 h-5" />
+                        <x-tabler-checkbox class="size-5" />
                         <span>Selesai diantar</span>
                         @livewire('partial.getcount', ['status' => 'done'], key(3))
                     </a>
@@ -66,7 +66,7 @@
             @can('setting.index')
                 <li>
                     <a href="{{ route('setting.index') }}" class="{{ $this->isActive('setting.index') }}" wire:navigate>
-                        <x-tabler-settings class="w-5 h-5" />
+                        <x-tabler-settings class="size-5" />
                         <span>Pengaturan App</span>
                     </a>
                 </li>
@@ -76,7 +76,7 @@
                 <li>
                     <a href="{{ route('permission.index') }}" class="{{ $this->isActive('permission.index') }}"
                         wire:navigate>
-                        <x-tabler-key class="w-5 h-5" />
+                        <x-tabler-key class="size-5" />
                         <span>App Permission</span>
                     </a>
                 </li>
@@ -85,7 +85,7 @@
             @can('user.index')
                 <li>
                     <a href="{{ route('user.index') }}" class="{{ $this->isActive('user.index') }}" wire:navigate>
-                        <x-tabler-users class="w-5 h-5" />
+                        <x-tabler-users class="size-5" />
                         <span>User mangement</span>
                     </a>
                 </li>
@@ -93,7 +93,7 @@
 
             <li>
                 <button wire:click="logout">
-                    <x-tabler-logout class="w-5 h-5" />
+                    <x-tabler-logout class="size-5" />
                     <span>Logout</span>
                 </button>
             </li>

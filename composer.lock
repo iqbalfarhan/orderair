@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0fe660b308ea16c121b9192beea62088",
+    "content-hash": "6b740df1210294d32954a7158076101e",
     "packages": [
         {
             "name": "blade-ui-kit/blade-icons",
@@ -3408,27 +3408,27 @@
         },
         {
             "name": "ryangjchandler/blade-tabler-icons",
-            "version": "v2.1.0",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ryangjchandler/blade-tabler-icons.git",
-                "reference": "e911146f6ea809712242106bcfec0dc381905f6a"
+                "reference": "cd359f5d3b406a982dae1aaaf121d84067576a2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ryangjchandler/blade-tabler-icons/zipball/e911146f6ea809712242106bcfec0dc381905f6a",
-                "reference": "e911146f6ea809712242106bcfec0dc381905f6a",
+                "url": "https://api.github.com/repos/ryangjchandler/blade-tabler-icons/zipball/cd359f5d3b406a982dae1aaaf121d84067576a2e",
+                "reference": "cd359f5d3b406a982dae1aaaf121d84067576a2e",
                 "shasum": ""
             },
             "require": {
                 "blade-ui-kit/blade-icons": "^1.5",
-                "illuminate/support": "^10.0",
+                "illuminate/support": "^10.0 || ^11.0",
                 "php": "^8.1"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.14",
-                "orchestra/testbench": "^8.0",
-                "phpunit/phpunit": "^9.5.10"
+                "orchestra/testbench": "^8.0 || ^9.0",
+                "phpunit/phpunit": "^9.5.10 || ^10.5"
             },
             "type": "library",
             "extra": {
@@ -3464,9 +3464,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ryangjchandler/blade-tabler-icons/issues",
-                "source": "https://github.com/ryangjchandler/blade-tabler-icons/tree/v2.1.0"
+                "source": "https://github.com/ryangjchandler/blade-tabler-icons/tree/v2.3.0"
             },
-            "time": "2023-08-15T09:10:31+00:00"
+            "time": "2024-03-12T23:54:24+00:00"
         },
         {
             "name": "spatie/laravel-permission",
@@ -8520,5 +8520,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

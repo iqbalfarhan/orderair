@@ -1,41 +1,34 @@
-<div class="space-y-6">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="stats shadow w-full">
-            <a href="{{ route('order.queue') }}" class="stat">
-                <div class="stat-title">Masih antri</div>
-                <div class="stat-value">{{ $datas->where('status', 'queue')->count() }}</div>
-                <div class="stat-desc">Dalam antrian</div>
-            </a>
-        </div>
-        <div class="stats shadow w-full">
-            <a href="{{ route('order.progress') }}" class="stat">
-                <div class="stat-title">On Progress</div>
-                <div class="stat-value">{{ $datas->where('status', 'progress')->count() }}</div>
-                <div class="stat-desc">Sedang diproses</div>
-            </a>
-        </div>
-        <div class="stats shadow w-full">
-            <a href="{{ route('order.done') }}" class="stat">
-                <div class="stat-title">Selesai diantar</div>
-                <div class="stat-value">{{ $datas->where('status', 'done')->count() }}</div>
-                <div class="stat-desc">Selesai diantar</div>
-            </a>
-        </div>
-        <div class="stats shadow w-full">
-            <div class="stat">
-                <div class="stat-title">Total pesanan</div>
-                <div class="stat-value">{{ $datas->count() }}</div>
-                <div class="stat-desc">Semua pesanan</div>
-            </div>
-        </div>
+<div class="page-wrapper">
+    <div class="grid md:grid-cols-4 gap-2 md:gap-4">
+        <a href="{{ route('order.queue') }}">
+            @livewire('widget.orderitem', [
+                'title' => 'Mengantri',
+                'number' => $datas->where('status', 'queue')->count(),
+                'label' => 'Order dalam antrian',
+            ])
+        </a>
+        <a href="{{ route('order.progress') }}">
+            @livewire('widget.orderitem', [
+                'title' => 'On Progress',
+                'number' => $datas->where('status', 'progress')->count(),
+                'label' => 'Proses dan pengiriman',
+            ])
+        </a>
+        <a href="{{ route('order.done') }}">
+            @livewire('widget.orderitem', [
+                'title' => 'Sudah selesai',
+                'number' => $datas->where('status', 'done')->count(),
+                'label' => 'Order selesai diantar',
+            ])
+        </a>
+        @livewire('widget.orderitem', [
+            'title' => 'Semua order',
+            'number' => $datas->count(),
+            'label' => 'Semua status orderan',
+        ])
     </div>
 
-    <div class="space-y-3">
-        <h2 class="text-lg">
-            Pencarian pesanan
-        </h2>
-        @livewire('order.search')
-    </div>
+    @livewire('order.search')
 
     <div class="space-y-3">
         <h2 class="text-lg">

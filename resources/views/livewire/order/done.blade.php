@@ -1,4 +1,4 @@
-<div class="space-y-6">
+<div class="page-wrapper">
     <div class="flex flex-col lg:flex-row justify-between gap-6">
         @livewire('partial.header', [
             'title' => 'Selesai pengiriman',
@@ -11,8 +11,8 @@
         </div>
     </div>
 
-    <div class="overflow-x-auto bg-base-100 rounded shadow">
-        <table class="table whitespace-nowrap">
+    <div class="table-wrapper">
+        <table class="table">
             <thead class="border-b-4 border-base-200">
                 <th>Antrian</th>
                 <th>Nama</th>
@@ -28,7 +28,8 @@
                 @foreach ($datas as $data)
                     <tr>
                         <td>
-                            <a href="{{ route('order.show', $data->id) }}" class="btn btn-ghost btn-circle">{{ $data->id }}</a>
+                            <button wire:click="$dispatch('orderShow', {order: {{ $data->id }}})"
+                                class="btn btn-circle">{{ $data->id }}</button>
                         </td>
                         <td>
                             <div class="flex flex-col">
@@ -45,9 +46,10 @@
                                 </div>
                             @endif
                         </td>
-                        @can('order.showTransferImage')    
+                        @can('order.showTransferImage')
                             <td>
-                                <button class="avatar" wire:click.prevent="$dispatch('showImage', ['{{ $data->transfer_url }}'])">
+                                <button class="avatar"
+                                    wire:click.prevent="$dispatch('showImage', ['{{ $data->transfer_url }}'])">
                                     <div class="w-12 rounded-lg">
                                         <img src="{{ $data->transfer_url }}" alt="">
                                     </div>
@@ -65,12 +67,15 @@
                         <td>
                             <div class="flex gap-1">
                                 @can('order.edit')
-                                    <a href="{{ route('order.edit', $data->id) }}" class="btn btn-xs btn-success btn-square">
+                                    <a href="{{ route('order.edit', $data->id) }}"
+                                        class="btn btn-xs btn-success btn-square">
                                         <x-tabler-edit class="w-4 h-4" />
                                     </a>
                                 @endcan
                                 @can('order.delete')
-                                    <button class="btn btn-xs btn-error btn-square" wire:click="deleteOrder({{ $data->id }})" wire:confirm="anda yakin akan menghapus antrian ini?">
+                                    <button class="btn btn-xs btn-error btn-square"
+                                        wire:click="deleteOrder({{ $data->id }})"
+                                        wire:confirm="anda yakin akan menghapus antrian ini?">
                                         <x-tabler-trash class="w-4 h-4" />
                                     </button>
                                 @endcan

@@ -1,4 +1,4 @@
-<div class="card bg-base-100 shadow">
+<div class="card card-compact">
     <div class="card-body">
         <div class="form-control">
             <label for="" class="label">
@@ -24,7 +24,8 @@
                         @foreach ($datas as $data)
                             <tr>
                                 <td>
-                                    <a href="{{ route('order.show', $data->id) }}" class="btn btn-ghost btn-circle">{{ $data->id }}</a>
+                                    <a href="{{ route('order.show', $data->id) }}"
+                                        class="btn btn-ghost btn-circle">{{ $data->id }}</a>
                                 </td>
                                 <td>
                                     <div class="flex flex-col">
